@@ -19,11 +19,7 @@ func main() {
 	circle := Circle{0, 0, 4}
 	rectangle := Rectangle{0, 0, 14, 13}
 
-	fmt.Println("AREA Circle: ", circle.area())
-	fmt.Println("AREA Rectangle: ", rectangle.area())
-
-    fmt.Println("PERIMETER Circle: ", circle.perimeter())
-    fmt.Println("PERIMETER Rectangle: ", rectangle.perimeter())
+	show(&circle, &rectangle)
 }
 
 type Circle struct {
@@ -61,4 +57,12 @@ func (circle *Circle) perimeter() float64 {
 type Shape interface {
 	area() float64
 	perimeter() float64 // calculates the perimeter of a Shape
+}
+
+func show(shapes ...Shape)  {
+	for _, shape := range shapes{
+		fmt.Println("AREA: ", shape.area())
+
+	    fmt.Println("PERIMETER: ", shape.perimeter())
+	}
 }
